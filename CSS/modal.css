@@ -1,0 +1,127 @@
+/* ------------------------------ Modal ------------------------- */
+#dark-background{
+  position: absolute;
+  min-width: 100vw;
+  min-height: 100vh;
+  background: black;
+  opacity: 0.6;
+}
+
+#modal{
+  position: absolute;
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  min-width: 60vw;
+  min-height: 60vh;
+  background: rgb(255, 252, 252);
+  border-radius: 5px;
+}
+
+.defaults{
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#default{
+  outline: none;
+  border-radius: 5px;
+  padding: .5rem;
+  font-size: 1rem;
+}
+
+#default:hover{
+  background: darkgray;
+  color: white;
+}
+
+#default:active{
+  transform: scale(0.95);
+  transition: ease-in-out;
+}
+
+
+.custom-times{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  min-width: 90%;
+}
+
+.time{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  min-width: 5rem;
+}
+
+.time p{
+  margin: 1rem;
+  font-size: 1.5rem;
+}
+
+.time-input{
+  min-width: 8rem;
+  height: 3rem;
+  font-size: 1.1rem;
+  padding: 1rem;
+  outline: none;
+  border-radius: 5px;
+}
+
+.confirmation{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sessions{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 5rem;
+  margin: 2rem;
+  font-size: 1.2rem;
+}
+
+.sessions p{
+  margin: 0 1rem;
+}
+
+#custom-s{
+  font-size: 1.1rem;
+  padding: .5rem;
+  outline: none;
+  color: black;
+  border-radius: 5px;
+}
+
+#back{
+  outline: none;
+  width: 10rem;
+  height: 4rem;
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+
+#back:hover{
+  background: darkgray;
+  color: white;
+}
+
+#back:active{
+  transform: scale(0.95);
+  transition: ease-in-out;
+}
