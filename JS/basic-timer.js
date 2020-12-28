@@ -40,7 +40,7 @@ function start (){
 
   stopActive = false; 
   if(startActive == false) {
-    runTimerFunc = setInterval(timer, 1);
+    runTimerFunc = setInterval(timer, 1000);
     startActive = true;
   }
 };
