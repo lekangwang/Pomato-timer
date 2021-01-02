@@ -71,7 +71,7 @@ function reset (){
 
 function padWithZeros(val) {
   //check if val is only 1 digit if
-  if (val / 10 < 0) {
+  if (val / 10 < 1) {
     return "0" + val;
   }else {
     return val;
