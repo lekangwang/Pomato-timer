@@ -34,24 +34,6 @@
   justify-content: flex-end;
 }
 
-#default{
-  outline: none;
-  border-radius: 5px;
-  padding: .5rem;
-  font-size: 1rem;
-}
-
-#default:hover{
-  background: darkgray;
-  color: white;
-}
-
-#default:active{
-  transform: scale(0.95);
-  transition: ease-in-out;
-}
-
-
 .custom-times{
   display: flex;
   align-items: center;
@@ -106,22 +88,4 @@
   outline: none;
   color: black;
   border-radius: 5px;
-}
-
-#back{
-  outline: none;
-  width: 10rem;
-  height: 4rem;
-  font-size: 1.2rem;
-  border-radius: 5px;
-}
-
-#back:hover{
-  background: darkgray;
-  color: white;
-}
-
-#back:active{
-  transform: scale(0.95);
-  transition: ease-in-out;
 }

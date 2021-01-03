@@ -40,7 +40,7 @@ function start (){
 
   stopActive = false; 
   if(startActive == false) {
-    runTimerFunc = setInterval(timer, 1000);
+    runTimerFunc = setInterval(timer, 1);
     startActive = true;
   }
 };
@@ -65,6 +65,8 @@ function reset (){
   minutes.innerText = modeMin;
   seconds.innerText = "00";
 
+  updateTitle();
+
   startActive = false;
   stopActive = false;
 };
@@ -85,12 +87,14 @@ function timer() {
     if(sessions.innerText < 1){
       //check which mode you're in 
       if(mode === "Long Break") {
+        updateGraph("break");
         sessions.innerText = custom_s.value;
         sessions.classList.remove("remove");
         sessionsText.innerText = "Sessions until break:";
         modeDiv.innerText = "Work";
         mode = "Work";
       } else {
+        updateGraph("break");
         sessions.innerText = 0;
         sessions.classList.add("remove");
         sessionsText.innerText = "Long breaktime!";
@@ -110,12 +114,14 @@ function timer() {
     } else {
       //check which mode you're in 
       if(mode === "Work") {
+        updateGraph("work");
         sessions.classList.add("remove");
         sessions.innerText --;
         sessionsText.innerText = "Breaktime!";
         modeDiv.innerText = "Break";
         mode = "Break";
       } else {
+        updateGraph("break");
         sessions.classList.remove("remove");
         sessionsText.innerText = "Sessions until break:";
         modeDiv.innerText = "Work";

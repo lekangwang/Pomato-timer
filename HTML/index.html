@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pomodoro Timer</title>
+  <link rel="stylesheet" href="/CSS/buttons.css">
   <link rel="stylesheet" href="/CSS/timer.css">
   <link rel="stylesheet" href="/CSS/modal.css">
+  <link rel="stylesheet" href="/CSS/stats.css">
   <script src="https://kit.fontawesome.com/18feb0d9fc.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -33,6 +35,10 @@
           <i class="fas fa-sliders-h"></i>
           <span>Customize</span>
         </button>
+        <button data-file="click" id="stats-btn" class="grey-btn-sm" onclick="enterStats();">
+          <i class="far fa-chart-bar"></i>
+          <span>Your Stats</span>
+        </button>
       </section>
     </div>
 
@@ -40,7 +46,7 @@
     <div id="modal" class="remove">
       <section class="custom">
         <div class="defaults">
-          <button data-file="click2" id="default" onclick="resetTimes()">
+          <button data-file="click2" id="default" class="grey-btn-sm" onclick="resetTimes()">
             <i class="fas fa-history"></i> Reset to Defaults
           </button>
         </div>
@@ -63,9 +69,45 @@
             <p>Sessions</p>
             <input type="number" name="custom-sessions" id="custom-s" class="sessions-input" value="4" min="1" max="10">
           </div>
-          <button data-file="click" id="back" onclick="exitModal()">Back to work!</button>
+          <button data-file="click" id="back" class="grey-btn-lg" onclick="exitModal()">Back to work!</button>
         </div>
       </section>
+    </div>
+
+    <!-- statistics -->
+    <div id="stats" class="remove">
+      <div id="stats-wrapper">
+        <p>Your Stats</p>
+        <div id="stats-info">
+          <div id="stats-graph">
+            <div class="stats-bar">
+              <div class="stats-container">
+                <div id="stats-work-bar"></div>
+              </div>
+              <div>Work</div>
+            </div>
+            <div class="stats-bar">
+              <div class="stats-container" id="stats-maxbar">
+                <div id="stats-break-bar"></div>
+              </div>
+              <div>Break</div>
+            </div>
+          </div>
+          <div id="stats-labels">
+            <div class="stats-label">
+              <p>Work Sessions</p>
+              <p id="sessions-work">0</p>
+            </div>
+            <div class="stats-label">
+              <p>Break Sessions</p>
+              <p id="sessions-break">0</p>
+            </div>
+          </div>
+        </div>
+        <div id="stats-controls">
+          <button id="stats-back" class="grey-btn-lg" data-file="click" onclick="exitStats();">Go Back</button>
+        </div>
+      </div>
     </div>
     <footer class="foot">
       <p>Le Kang Wang &copy 2020</p>
@@ -76,5 +118,6 @@
   <script src="/JS/basic-timer.js"></script>
   <script src="/JS/customize.js"></script>
   <script src="/JS/sounds.js"></script>
+  <script src="/JS/stats.js"></script>
 </body>
 </html>
