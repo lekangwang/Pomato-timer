@@ -3,11 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pomodoro Timer</title>
+    <title>Pomato Pomodoro Timer</title>
     <link rel="stylesheet" href="/CSS/buttons.css" />
     <link rel="stylesheet" href="/CSS/timer.css" />
     <link rel="stylesheet" href="/CSS/modal.css" />
     <link rel="stylesheet" href="/CSS/stats.css" />
+    <link rel="stylesheet" href="/CSS/about.css" />
+    <link rel="icon" type="image/png" href="/pomato-logo.png" />
     <script
       src="https://kit.fontawesome.com/18feb0d9fc.js"
       crossorigin="anonymous"
@@ -176,11 +178,69 @@
           </div>
         </div>
       </div>
-      <footer class="foot">
-        <p>Le Kang Wang &copy 2020</p>
-      </footer>
       <audio id="audio-player" src=""></audio>
     </div>
+    <div class="about-container">
+      <section class="about">
+        <h1>A Pomato a day keeps laziness at bay</h1>
+        <section class="about-text-section">
+          <h3>What is Pomato Timer?</h3>
+          <div class="about-underline"></div>
+          <p>
+            Pomato Timer is a custom single-page Pomodoro timer webapp created
+            with HTML/CSS and vanilla Javascript. This app is a productivity
+            tool that will help you get work done by organizing your time into
+            chunks for both working and breaks. This app was inspired by the
+            Pomodoro technique created by Francesco Cirillo in the 1980s.
+          </p>
+        </section>
+        <section class="about-text-section">
+          <h3>The Pomodoro technique</h3>
+          <div class="about-underline"></div>
+          <p>
+            The Pomodoro Technique was developed in the late 1980s by then
+            university student Francesco Cirillo. Cirillo was struggling to
+            focus on his studies and complete assignments. Feeling overwhelmed,
+            he asked himself to commit to just 10 minutes of focused study time.
+            Encouraged by the challenge, he found a tomato (pomodoro in Italian)
+            shaped kitchen timer, and the Pomodoro technique was born.
+          </p>
+          <p>
+            The technique is simple, find a task to complete and set aside 25
+            minutes to concentrate on this task. After 25 minutes, you may take
+            a 5 minute break. Count this 25 minute work / 5 minute break as one
+            Pomodoro. After 4 Pomodoros, you may take a 15-30 minute break.
+          </p>
+        </section>
+        <section class="about-text-section">
+          <h3>Features</h3>
+          <div class="about-underline"></div>
+          <ul>
+            <li>
+              Click the "Customize" button to (although not technically
+              Pomodoro) the time duration of the work, short break and long
+              break sessions.
+            </li>
+            <li>
+              Click the "Your Stats" button to track your work and break
+              session. From the bar graph you can see a visual representation of
+              the time spent working and on break. (Each bar graph is
+              permanently set to 6 hours each. Will add feature to change the
+              time goal)
+            </li>
+            <li>
+              Clicking the "Reset" button will reset the time of the current
+              session (either work, short break or long break). Clicking "Reset"
+              will <em>not</em> impact your stats or reset all session time
+              durations back to the Pomodoro technique standard.
+            </li>
+          </ul>
+        </section>
+      </section>
+    </div>
+    <footer class="foot">
+      <p>Le Kang Wang &copy 2020</p>
+    </footer>
     <script src="/JS/title.js"></script>
     <script src="/JS/basic-timer.js"></script>
     <script src="/JS/customize.js"></script>
