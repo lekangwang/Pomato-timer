@@ -20,32 +20,35 @@ let custom_sb = document.getElementById("custom-sb");
 let custom_lb = document.getElementById("custom-lb");
 let custom_s = document.getElementById("custom-s");
 
-let runTimerFunc, startActive = false, stopActive = false;
+let runTimerFunc,
+  startActive = false,
+  stopActive = false;
 
 //Calculate work or break minutes
 function calcMin(mode) {
-  if(mode == "Work"){
+  if (mode == "Work") {
     return custom_w.value;
-  }else if (mode == "Long Break"){
+  } else if (mode == "Long Break") {
     return custom_lb.value;
-  }else{
+  } else {
     return custom_sb.value;
   }
 }
 let modeMin = calcMin(mode);
 
-function start (){
+//start the timer function in 1s intervals
+function start() {
   stopBtn.classList.remove("pressed");
   startBtn.classList.add("pressed");
 
-  stopActive = false; 
-  if(startActive == false) {
+  stopActive = false;
+  if (startActive == false) {
     runTimerFunc = setInterval(timer, 1);
     startActive = true;
   }
-};
+}
 
-function stop (){
+function stop() {
   stopBtn.classList.add("pressed");
   startBtn.classList.remove("pressed");
 
@@ -54,9 +57,9 @@ function stop (){
     startActive = false;
     stopActive = true;
   }
-};
+}
 
-function reset (){
+function reset() {
   //add raise button style class to start and stop button
   stopTimer();
   stopBtn.classList.remove("pressed");
@@ -69,24 +72,24 @@ function reset (){
 
   startActive = false;
   stopActive = false;
-};
+}
 
 function padWithZeros(val) {
   //check if val is only 1 digit if
   if (val / 10 < 1) {
     return "0" + val;
-  }else {
+  } else {
     return val;
   }
 }
 
 function timer() {
   //check if the seconds is 0 and minutes is 0
-  if(minutes.innerText == 0 && seconds.innerText == 0){
-    //check sessions if 0 
-    if(sessions.innerText < 1){
-      //check which mode you're in 
-      if(mode === "Long Break") {
+  if (minutes.innerText == 0 && seconds.innerText == 0) {
+    //check sessions if 0
+    if (sessions.innerText < 1) {
+      //check which mode you're in
+      if (mode === "Long Break") {
         updateGraph("break");
         sessions.innerText = custom_s.value;
         sessions.classList.remove("remove");
@@ -104,19 +107,19 @@ function timer() {
       stopTimer();
       stopBtn.classList.remove("pressed");
       startBtn.classList.remove("pressed");
-    
+
       modeMin = calcMin(mode);
       minutes.innerText = padWithZeros(modeMin);
       seconds.innerText = "00";
-    
+
       startActive = false;
       stopActive = false;
     } else {
-      //check which mode you're in 
-      if(mode === "Work") {
+      //check which mode you're in
+      if (mode === "Work") {
         updateGraph("work");
         sessions.classList.add("remove");
-        sessions.innerText --;
+        sessions.innerText--;
         sessionsText.innerText = "Breaktime!";
         modeDiv.innerText = "Break";
         mode = "Break";
@@ -134,10 +137,10 @@ function timer() {
       stopTimer();
       stopBtn.classList.remove("pressed");
       startBtn.classList.remove("pressed");
-      
+
       minutes.innerText = padWithZeros(modeMin);
       seconds.innerText = "00";
-    
+
       startActive = false;
       stopActive = false;
     }
@@ -145,13 +148,13 @@ function timer() {
   } else if (seconds.innerText == 0) {
     //decrement minutes, set seconds to 59;
     minutes.innerText--;
-    if(minutes.innerText < 10) {
+    if (minutes.innerText < 10) {
       minutes.innerText = padWithZeros(minutes.innerText);
     }
     seconds.innerText = 59;
   } else {
-    seconds.innerText--; 
-    if(seconds.innerText < 10) {
+    seconds.innerText--;
+    if (seconds.innerText < 10) {
       seconds.innerText = padWithZeros(seconds.innerText);
     }
   }
@@ -161,4 +164,3 @@ function timer() {
 function stopTimer() {
   clearInterval(runTimerFunc);
 }
-

@@ -1,123 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pomodoro Timer</title>
-  <link rel="stylesheet" href="/CSS/buttons.css">
-  <link rel="stylesheet" href="/CSS/timer.css">
-  <link rel="stylesheet" href="/CSS/modal.css">
-  <link rel="stylesheet" href="/CSS/stats.css">
-  <script src="https://kit.fontawesome.com/18feb0d9fc.js" crossorigin="anonymous"></script>
-</head>
-<body>
-  <div class="container">
-    <div class="content">
-      <header id="type" class="greeting">
-        Work
-      </header>
-      <main class="clock">
-        <div id="minutes">25</div>
-        <div>:</div>
-        <div id="seconds">00</div>
-      </main>
-      <section class="controls">
-        <button data-file="click" class="btn" id="start" onclick="start()">Start</button>
-        <button data-file="click" class="btn" id="reset" onclick="reset()">Reset</button>
-        <button data-file="click" class="btn" id="stop" onclick="stop()">Stop</button>
-      </section>
-      <section class="break-counter">
-        <div class="break-header" id="sessions-header">Sessions until break:</div>
-        <div class="break-count" id="sessions">4</div>
-      </section>
-      <section class="custom-container">
-        <button data-file="click" id="custom-btn" onclick="enterModal()">
-          <i class="fas fa-sliders-h"></i>
-          <span>Customize</span>
-        </button>
-        <button data-file="click" id="stats-btn" class="grey-btn-sm" onclick="enterStats();">
-          <i class="far fa-chart-bar"></i>
-          <span>Your Stats</span>
-        </button>
-      </section>
-    </div>
-
-    <div id="dark-background" class="remove"></div>
-    <div id="modal" class="remove">
-      <section class="custom">
-        <div class="defaults">
-          <button data-file="click2" id="default" class="grey-btn-sm" onclick="resetTimes()">
-            <i class="fas fa-history"></i> Reset to Defaults
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="/CSS/buttons.css" />
+    <link rel="stylesheet" href="/CSS/timer.css" />
+    <link rel="stylesheet" href="/CSS/modal.css" />
+    <link rel="stylesheet" href="/CSS/stats.css" />
+    <script
+      src="https://kit.fontawesome.com/18feb0d9fc.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <header id="type" class="greeting">Work</header>
+        <main class="clock">
+          <div id="minutes">25</div>
+          <div>:</div>
+          <div id="seconds">00</div>
+        </main>
+        <section class="controls">
+          <button data-file="click" class="btn" id="start" onclick="start()">
+            Start
           </button>
-        </div>
-        <div class="custom-times">
-          <div class="time">
-            <p>Work</p>
-            <input type="number" name="custom-time" id="custom-w" class="time-input" value="25" min="1" max="60">
+          <button data-file="click" class="btn" id="reset" onclick="reset()">
+            Reset
+          </button>
+          <button data-file="click" class="btn" id="stop" onclick="stop()">
+            Stop
+          </button>
+        </section>
+        <section class="break-counter">
+          <div class="break-header" id="sessions-header">
+            Sessions until break:
           </div>
-          <div class="time">
-            <p>Short Break</p>
-            <input type="number" name="custom-time" id="custom-sb" class="time-input" value="5" min="1" max="60">
-          </div>
-          <div class="time">
-            <p>Long Break</p>
-            <input type="number" name="custom-time" id="custom-lb" class="time-input" value="15" min="1" max="60">
-          </div>
-        </div>
-        <div class="confirmation">
-          <div class="sessions">
-            <p>Sessions</p>
-            <input type="number" name="custom-sessions" id="custom-s" class="sessions-input" value="4" min="1" max="10">
-          </div>
-          <button data-file="click" id="back" class="grey-btn-lg" onclick="exitModal()">Back to work!</button>
-        </div>
-      </section>
-    </div>
+          <div class="break-count" id="sessions">4</div>
+        </section>
+        <section class="custom-container">
+          <button data-file="click" id="custom-btn" onclick="enterModal()">
+            <i class="fas fa-sliders-h"></i>
+            <span>Customize</span>
+          </button>
+          <button
+            data-file="click"
+            id="stats-btn"
+            class="grey-btn-sm"
+            onclick="enterStats();"
+          >
+            <i class="far fa-chart-bar"></i>
+            <span>Your Stats</span>
+          </button>
+        </section>
+      </div>
 
-    <!-- statistics -->
-    <div id="stats" class="remove">
-      <div id="stats-wrapper">
-        <p>Your Stats</p>
-        <div id="stats-info">
-          <div id="stats-graph">
-            <div class="stats-bar">
-              <div class="stats-container">
-                <div id="stats-work-bar"></div>
-              </div>
-              <div>Work</div>
+      <div id="dark-background" class="remove"></div>
+      <div id="modal" class="remove">
+        <section class="custom">
+          <div class="defaults">
+            <button
+              data-file="click2"
+              id="default"
+              class="grey-btn-sm"
+              onclick="resetTimes()"
+            >
+              <i class="fas fa-history"></i> Reset to Defaults
+            </button>
+          </div>
+          <div class="custom-times">
+            <div class="time">
+              <p>Work</p>
+              <input
+                type="number"
+                name="custom-time"
+                id="custom-w"
+                class="time-input"
+                value="25"
+                min="1"
+                max="60"
+              />
             </div>
-            <div class="stats-bar">
-              <div class="stats-container" id="stats-maxbar">
-                <div id="stats-break-bar"></div>
-              </div>
-              <div>Break</div>
+            <div class="time">
+              <p>Short Break</p>
+              <input
+                type="number"
+                name="custom-time"
+                id="custom-sb"
+                class="time-input"
+                value="5"
+                min="1"
+                max="60"
+              />
+            </div>
+            <div class="time">
+              <p>Long Break</p>
+              <input
+                type="number"
+                name="custom-time"
+                id="custom-lb"
+                class="time-input"
+                value="15"
+                min="1"
+                max="60"
+              />
             </div>
           </div>
-          <div id="stats-labels">
-            <div class="stats-label">
-              <p>Work Sessions</p>
-              <p id="sessions-work">0</p>
+          <div class="confirmation">
+            <div class="sessions">
+              <p>Sessions</p>
+              <input
+                type="number"
+                name="custom-sessions"
+                id="custom-s"
+                class="sessions-input"
+                value="4"
+                min="1"
+                max="10"
+              />
             </div>
-            <div class="stats-label">
-              <p>Break Sessions</p>
-              <p id="sessions-break">0</p>
+            <button
+              data-file="click"
+              id="back"
+              class="grey-btn-lg"
+              onclick="exitModal()"
+            >
+              Back to work!
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <!-- statistics -->
+      <div id="stats" class="remove">
+        <div id="stats-wrapper">
+          <p>Your Stats</p>
+          <div id="stats-info">
+            <div id="stats-graph">
+              <div class="stats-bar">
+                <div class="stats-container">
+                  <div id="stats-work-bar"></div>
+                </div>
+                <div>Work</div>
+                <div>6 hours</div>
+              </div>
+              <div class="stats-bar">
+                <div class="stats-container" id="stats-maxbar">
+                  <div id="stats-break-bar"></div>
+                </div>
+                <div>Break</div>
+                <div>6 hours</div>
+              </div>
+            </div>
+            <div id="stats-labels">
+              <div class="stats-label">
+                <p>Work Sessions</p>
+                <p id="sessions-work">0</p>
+              </div>
+              <div class="stats-label">
+                <p>Break Sessions</p>
+                <p id="sessions-break">0</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div id="stats-controls">
-          <button id="stats-back" class="grey-btn-lg" data-file="click" onclick="exitStats();">Go Back</button>
+          <div id="stats-controls">
+            <button
+              id="stats-back"
+              class="grey-btn-lg"
+              data-file="click"
+              onclick="exitStats();"
+            >
+              Go Back
+            </button>
+          </div>
         </div>
       </div>
+      <footer class="foot">
+        <p>Le Kang Wang &copy 2020</p>
+      </footer>
+      <audio id="audio-player" src=""></audio>
     </div>
-    <footer class="foot">
-      <p>Le Kang Wang &copy 2020</p>
-    </footer>
-    <audio id="audio-player" src=""></audio>
-  </div>
-  <script src="/JS/title.js"></script>
-  <script src="/JS/basic-timer.js"></script>
-  <script src="/JS/customize.js"></script>
-  <script src="/JS/sounds.js"></script>
-  <script src="/JS/stats.js"></script>
-</body>
+    <script src="/JS/title.js"></script>
+    <script src="/JS/basic-timer.js"></script>
+    <script src="/JS/customize.js"></script>
+    <script src="/JS/sounds.js"></script>
+    <script src="/JS/stats.js"></script>
+  </body>
 </html>
