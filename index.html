@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     <title>Pomato Timer</title>
   </head>
   <body>
@@ -47,6 +48,8 @@
       <!--Help-->
       <div class="modals-help">
         <h1>A Pomato a day keeps laziness at bay</h1>
+
+        <!--Section 1-->
         <div class="modals-help-section">
           <h2>About Pomato Timer</h2>
           <div class="modals-help-section-divider"></div>
@@ -58,6 +61,8 @@
             hours.
           </p>
         </div>
+
+        <!--Section 2-->
         <div class="modals-help-section">
           <h2>The Pomodoro Technique</h2>
           <div class="modals-help-section-divider"></div>
@@ -76,6 +81,8 @@
             Pomodoro. After 4 Pomodoros, you may take a 15-30 minute break.
           </p>
         </div>
+
+        <!--Section 3-->
         <div class="modals-help-section">
           <h2>Features</h2>
           <div class="modals-help-section-divider"></div>
@@ -106,6 +113,11 @@
             </li>
           </ul>
         </div>
+
+        <!--Back-->
+        <div class="modals-help-back">
+          <button id="help-back-btn" class="grey-btn">Close</button>
+        </div>
       </div>
 
       <!--Customize-->
@@ -113,6 +125,8 @@
         <div class="modals-customize-default">
           <button id="default-btn">Reset to default</button>
         </div>
+
+        <!--Custom work-->
         <div class="modals-customize-wbl">
           <div class="modals-customize-stack">
             <p>Work</p>
@@ -126,6 +140,8 @@
             />
           </div>
         </div>
+
+        <!--Custom short break-->
         <div class="modals-customize-wbl">
           <div class="modals-customize-stack">
             <p>Short break</p>
@@ -139,6 +155,8 @@
             />
           </div>
         </div>
+
+        <!--Custom long break-->
         <div class="modals-customize-wbl">
           <div class="modals-customize-stack">
             <p>Long break</p>
@@ -153,6 +171,7 @@
           </div>
         </div>
 
+        <!--Custom sessions-->
         <div class="modals-customize-sessions">
           <p>Sessions</p>
           <input
@@ -164,10 +183,46 @@
             required
           />
         </div>
+
+        <!--Back-->
+        <div class="modals-customize-back">
+          <button id="customize-back-btn" class="grey-btn">Close</button>
+        </div>
       </div>
 
       <!--Statistics-->
-      <div class="modals-stats">div</div>
+      <div class="modals-stats">
+        <h2>My Stats</h2>
+
+        <!--Stats main-->
+        <div class="modals-stats-main">
+          <!--Chart js-->
+          <div class="modals-stats-main-chart-container">
+            <canvas id="pomatoChart" height="400px" width="400px"></canvas>
+          </div>
+
+          <!--Session counters-->
+          <div class="modals-stats-main-counters">
+            <div class="modals-stats-main-counters-containers">
+              <p>Work sessions completed</p>
+              <p id="w-sessions-counter">0</p>
+            </div>
+            <div class="modals-statas-main-counters-containers">
+              <p>Short breaks completed</p>
+              <p id="sb-sessions-counter">0</p>
+            </div>
+            <div class="modals-statas-main-counters-containers">
+              <p>Long breaks completed</p>
+              <p id="lb-sessions-counter">0</p>
+            </div>
+          </div>
+        </div>
+
+        <!--Back-->
+        <div class="modals-stats-button">
+          <button id="stats-back-btn" class="grey-btn">Close</button>
+        </div>
+      </div>
     </section>
   </body>
 </html>
