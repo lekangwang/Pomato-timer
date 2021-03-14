@@ -2,201 +2,65 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pomato Pomodoro Timer</title>
-    <link rel="stylesheet" href="./CSS/buttons.css" />
-    <link rel="stylesheet" href="./CSS/timer.css" />
-    <link rel="stylesheet" href="./CSS/modal.css" />
-    <link rel="stylesheet" href="./CSS/stats.css" />
-    <link rel="stylesheet" href="./CSS/about.css" />
-    <link rel="icon" type="image/png" href="./pomato-logo.png?" />
-    <script
-      src="https://kit.fontawesome.com/18feb0d9fc.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <title>Pomato Timer</title>
   </head>
   <body>
-    <div class="container">
-      <div class="content">
-        <header id="type" class="greeting">Work</header>
-        <main class="clock">
-          <div id="minutes">25</div>
-          <div>:</div>
-          <div id="seconds">00</div>
-        </main>
-        <section class="controls">
-          <button data-file="click" class="btn" id="start" onclick="start()">
-            Start
-          </button>
-          <button data-file="click" class="btn" id="reset" onclick="reset()">
-            Reset
-          </button>
-          <button data-file="click" class="btn" id="stop" onclick="stop()">
-            Stop
-          </button>
-        </section>
-        <section class="break-counter">
-          <div class="break-header" id="sessions-header">
-            Sessions until break:
-          </div>
-          <div class="break-count" id="sessions">4</div>
-        </section>
-        <section class="custom-container">
-          <button data-file="click" id="custom-btn" onclick="enterModal()">
-            <i class="fas fa-sliders-h"></i>
-            <span>Customize</span>
-          </button>
-          <button
-            data-file="click"
-            id="stats-btn"
-            class="grey-btn-sm"
-            onclick="enterStats();"
-          >
-            <i class="far fa-chart-bar"></i>
-            <span>Your Stats</span>
-          </button>
-        </section>
-      </div>
+    <!--More info section-->
+    <header class="help">
+      <button id="help-btn" class="grey-btn">More info</button>
+    </header>
 
-      <div id="dark-background" class="remove"></div>
-      <div id="modal" class="remove">
-        <section class="custom">
-          <div class="defaults">
-            <button
-              data-file="click2"
-              id="default"
-              class="grey-btn-sm"
-              onclick="resetTimes()"
-            >
-              <i class="fas fa-history"></i> Reset to Defaults
-            </button>
-          </div>
-          <div class="custom-times">
-            <div class="time">
-              <p>Work</p>
-              <input
-                type="number"
-                name="custom-time"
-                id="custom-w"
-                class="time-input"
-                value="25"
-                min="1"
-                max="60"
-              />
-            </div>
-            <div class="time">
-              <p>Short Break</p>
-              <input
-                type="number"
-                name="custom-time"
-                id="custom-sb"
-                class="time-input"
-                value="5"
-                min="1"
-                max="60"
-              />
-            </div>
-            <div class="time">
-              <p>Long Break</p>
-              <input
-                type="number"
-                name="custom-time"
-                id="custom-lb"
-                class="time-input"
-                value="15"
-                min="1"
-                max="60"
-              />
-            </div>
-          </div>
-          <div class="confirmation">
-            <div class="sessions">
-              <p>Sessions</p>
-              <input
-                type="number"
-                name="custom-sessions"
-                id="custom-s"
-                class="sessions-input"
-                value="4"
-                min="1"
-                max="10"
-              />
-            </div>
-            <button
-              data-file="click"
-              id="back"
-              class="grey-btn-lg"
-              onclick="exitModal()"
-            >
-              Back to work!
-            </button>
-          </div>
-        </section>
-      </div>
+    <!--Mode indicator-->
+    <section class="mode">
+      <h3 id="mode-mode">Work</h3>
+    </section>
 
-      <!-- statistics -->
-      <div id="stats" class="remove">
-        <div id="stats-wrapper">
-          <p>Your Stats</p>
-          <div id="stats-info">
-            <div id="stats-graph">
-              <div class="stats-bar">
-                <div class="stats-container">
-                  <div id="stats-work-bar"></div>
-                </div>
-                <div>Work</div>
-                <div>6 hours</div>
-              </div>
-              <div class="stats-bar">
-                <div class="stats-container" id="stats-maxbar">
-                  <div id="stats-break-bar"></div>
-                </div>
-                <div>Break</div>
-                <div>6 hours</div>
-              </div>
-            </div>
-            <div id="stats-labels">
-              <div class="stats-label">
-                <p>Work Sessions</p>
-                <p id="sessions-work">0</p>
-              </div>
-              <div class="stats-label">
-                <p>Break Sessions</p>
-                <p id="sessions-break">0</p>
-              </div>
-            </div>
-          </div>
-          <div id="stats-controls">
-            <button
-              id="stats-back"
-              class="grey-btn-lg"
-              data-file="click"
-              onclick="exitStats();"
-            >
-              Go Back
-            </button>
-          </div>
-        </div>
+    <!--App-->
+    <main class="app">
+      <h1 class="app-timer">
+        <span id="app-timer-minutes">25</span> :
+        <span id="app-timer-seconds">00</span>
+      </h1>
+      <div class="app-controls">
+        <button id="start-btn" class="push-btn">Start</button>
+        <button id="reset-btn" class="push-btn">Reset</button>
+        <button id="stop-btn" class="push-btn">Stop</button>
       </div>
-      <audio id="audio-player" src=""></audio>
-    </div>
-    <div class="about-container">
-      <section class="about">
+      <div class="app-sessions">
+        <h4>Pomodoros until long break:</h4>
+        <p id="app-sessions-counter">4</p>
+      </div>
+      <div class="app-customize">
+        <button id="customize-btn" class="grey-btn">Customize</button>
+        <button id="stats-btn" class="grey-btn">Your Stats</button>
+      </div>
+    </main>
+
+    <!--Footer-->
+    <footer class="footer"></footer>
+
+    <!--Modals-->
+    <section class="modals modals-background">
+      <!--Help-->
+      <div class="modals-help">
         <h1>A Pomato a day keeps laziness at bay</h1>
-        <section class="about-text-section">
-          <h3>What is Pomato Timer?</h3>
-          <div class="about-underline"></div>
+        <div class="modals-help-section">
+          <h2>About Pomato Timer</h2>
+          <div class="modals-help-section-divider"></div>
           <p>
-            Pomato Timer is a custom single-page Pomodoro timer webapp created
-            with HTML/CSS and vanilla Javascript. This app is a productivity
-            tool that will help you get work done by organizing your time into
-            chunks for both working and breaks. This app was inspired by the
-            Pomodoro technique created by Francesco Cirillo in the 1980s.
+            Pomato Timer is a single-page timer webapp created using HTML/CSS
+            and vanilla Javascript. Based on on the Pomodoro timing technique
+            developed in the 1980s, this timer will help you get work done by
+            organizing your time into manageable chunks to maximize your waking
+            hours.
           </p>
-        </section>
-        <section class="about-text-section">
-          <h3>The Pomodoro technique</h3>
-          <div class="about-underline"></div>
+        </div>
+        <div class="modals-help-section">
+          <h2>The Pomodoro Technique</h2>
+          <div class="modals-help-section-divider"></div>
           <p>
             The Pomodoro Technique was developed in the late 1980s by then
             university student Francesco Cirillo. Cirillo was struggling to
@@ -211,40 +75,99 @@
             a 5 minute break. Count this 25 minute work / 5 minute break as one
             Pomodoro. After 4 Pomodoros, you may take a 15-30 minute break.
           </p>
-        </section>
-        <section class="about-text-section">
-          <h3>Features</h3>
-          <div class="about-underline"></div>
+        </div>
+        <div class="modals-help-section">
+          <h2>Features</h2>
+          <div class="modals-help-section-divider"></div>
           <ul>
             <li>
-              Click the "Customize" button to (although not technically
-              Pomodoro) the time duration of the work, short break and long
-              break sessions.
+              <p>
+                Click the "Customize" button to (although not technically
+                Pomodoro) alter the time duration of work, short break and long
+                break sessions.
+              </p>
             </li>
             <li>
-              Click the "Your Stats" button to track your work and break
-              session. From the bar graph you can see a visual representation of
-              the time spent working and on break. (Each bar graph is
-              permanently set to 6 hours each. Will add feature to change the
-              time goal)
+              <p>
+                Click the "Your Stats" button to track your work and break
+                session. From the bar graph you can see a visual representation
+                of the time spent working and on break. (Each bar graph is
+                permanently set to 6 hours each. Will add feature to change the
+                time goal)
+              </p>
             </li>
             <li>
-              Clicking the "Reset" button will reset the time of the current
-              session (either work, short break or long break). Clicking "Reset"
-              will <em>not</em> impact your stats or reset all session time
-              durations back to the Pomodoro technique standard.
+              <p>
+                "Reset" button will reset the time of the current session
+                (either work, short break or long break). Clicking "Reset" will
+                not impact your stats or reset all session time durations back
+                to the Pomodoro technique standard.
+              </p>
             </li>
           </ul>
-        </section>
-      </section>
-    </div>
-    <footer class="foot">
-      <p>Le Kang Wang &copy 2020</p>
-    </footer>
-    <script src="./JS/title.js"></script>
-    <script src="./JS/basic-timer.js"></script>
-    <script src="./JS/customize.js"></script>
-    <script src="./JS/sounds.js"></script>
-    <script src="./JS/stats.js"></script>
+        </div>
+      </div>
+
+      <!--Customize-->
+      <div class="modals-customize">
+        <div class="modals-customize-default">
+          <button id="default-btn">Reset to default</button>
+        </div>
+        <div class="modals-customize-wbl">
+          <div class="modals-customize-stack">
+            <p>Work</p>
+            <input
+              type="number"
+              name="custom-w"
+              value="25"
+              min="1"
+              max="59"
+              required
+            />
+          </div>
+        </div>
+        <div class="modals-customize-wbl">
+          <div class="modals-customize-stack">
+            <p>Short break</p>
+            <input
+              type="number"
+              name="custom-sb"
+              value="5"
+              min="1"
+              max="59"
+              required
+            />
+          </div>
+        </div>
+        <div class="modals-customize-wbl">
+          <div class="modals-customize-stack">
+            <p>Long break</p>
+            <input
+              type="number"
+              name="custom-lb"
+              value="15"
+              min="1"
+              max="59"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="modals-customize-sessions">
+          <p>Sessions</p>
+          <input
+            type="number"
+            name="custom-s"
+            value="4"
+            min="1"
+            max="10"
+            required
+          />
+        </div>
+      </div>
+
+      <!--Statistics-->
+      <div class="modals-stats">div</div>
+    </section>
   </body>
 </html>
