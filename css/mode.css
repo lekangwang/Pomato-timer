@@ -1,0 +1,8 @@
+.mode {
+  text-align: center;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}

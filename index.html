@@ -6,223 +6,246 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <link rel="icon" type="image/png" href="pomato-logo.png?" />
     <title>Pomato Timer</title>
+
+    <!--css files-->
+    <link rel="stylesheet" href="css/app-container.css">
+    <link rel="stylesheet" href="css/body.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/help.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/mode.css">
+
+    <!--modal css files-->
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/help-modal.css">
+    <link rel="stylesheet" href="css/custom-modal.css">
+    <link rel="stylesheet" href="css/stats-modal.css">
   </head>
   <body>
-    <!--More info section-->
-    <header class="help">
-      <button id="help-btn" class="grey-btn">More info</button>
-    </header>
+    <div class="app-container">
+      <!--More info section-->
+      <header class="mode">
+        <!--Mode indicator-->
+        <h3 id="mode-mode">Work</h3>
+      </header>
 
-    <!--Mode indicator-->
-    <section class="mode">
-      <h3 id="mode-mode">Work</h3>
+      <!--App-->
+      <main class="app">
+        <!--Timer-->
+        <div class="app-timer-container">
+          <h1 class="app-timer">
+            <span id="app-timer-minutes">25</span> :
+            <span id="app-timer-seconds">00</span>
+          </h1>
+          <div class="app-controls">
+            <button id="start-btn" class="push-btn">Start</button>
+            <button id="reset-btn" class="push-btn">Reset</button>
+            <button id="stop-btn" class="push-btn">Stop</button>
+          </div>
+        </div>
+
+        <!--sessions/more options-->
+        <div class="app-sessions-container">
+          <div class="app-sessions">
+            <h4>Pomodoros remaining</h4>
+            <p id="app-sessions-counter">4</p>
+          </div>
+          <div class="app-customize">
+            <button id="customize-btn" class="grey-btn">Customize</button>
+            <button id="stats-btn" class="grey-btn">Your Stats</button>
+            <button id="help-btn" class="grey-btn">More info</button>
+          </div>
+        </div>
+      </main>
+
+      <!--Footer-->
+      <footer class="footer">Le Kang Wang &copy 2021</footer>
+    </div>
+
+    <!------------------------------------------Modals------------------------------------------------------->
+    <!--Help-->
+    <section class="modals-help modal">
+      <h1>A Pomato a day keeps laziness at bay</h1>
+
+      <!--Section 1-->
+      <div class="modals-help-section">
+        <h2>About Pomato Timer</h2>
+        <div class="modals-help-section-divider"></div>
+        <p>
+          Pomato Timer is a single-page timer webapp created using HTML/CSS
+          and vanilla Javascript. Based on on the Pomodoro timing technique
+          developed in the 1980s, this timer will help you get work done by
+          organizing your time into manageable chunks to maximize your waking
+          hours.
+        </p>
+      </div>
+
+      <!--Section 2-->
+      <div class="modals-help-section">
+        <h2>The Pomodoro Technique</h2>
+        <div class="modals-help-section-divider"></div>
+        <p>
+          The Pomodoro Technique was developed in the late 1980s by then
+          university student Francesco Cirillo. Cirillo was struggling to
+          focus on his studies and complete assignments. Feeling overwhelmed,
+          he asked himself to commit to just 10 minutes of focused study time.
+          Encouraged by the challenge, he found a tomato (pomodoro in Italian)
+          shaped kitchen timer, and the Pomodoro technique was born.
+        </p>
+        <p>
+          The technique is simple, find a task to complete and set aside 25
+          minutes to concentrate on this task. After 25 minutes, you may take
+          a 5 minute break. Count this 25 minute work / 5 minute break as one
+          Pomodoro. After 4 Pomodoros, you may take a 15-30 minute break.
+        </p>
+      </div>
+
+      <!--Section 3-->
+      <div class="modals-help-section">
+        <h2>Features</h2>
+        <div class="modals-help-section-divider"></div>
+        <ul>
+          <li>
+            <p>
+              Click the "Customize" button to (although not technically
+              Pomodoro) alter the time duration of work, short break and long
+              break sessions.
+            </p>
+          </li>
+          <li>
+            <p>
+              Click the "Your Stats" button to track your work and break
+              session. From the bar graph you can see a visual representation
+              of the time spent working and on break. (Each bar graph is
+              permanently set to 6 hours each. Will add feature to change the
+              time goal)
+            </p>
+          </li>
+          <li>
+            <p>
+              "Reset" button will reset the time of the current session
+              (either work, short break or long break). Clicking "Reset" will
+              not impact your stats or reset all session time durations back
+              to the Pomodoro technique standard.
+            </p>
+          </li>
+        </ul>
+      </div>
+
+      <!--Back-->
+      <div class="modals-help-back">
+        <button id="help-back-btn" class="grey-btn">Close</button>
+      </div>
     </section>
 
-    <!--App-->
-    <main class="app">
-      <h1 class="app-timer">
-        <span id="app-timer-minutes">25</span> :
-        <span id="app-timer-seconds">00</span>
-      </h1>
-      <div class="app-controls">
-        <button id="start-btn" class="push-btn">Start</button>
-        <button id="reset-btn" class="push-btn">Reset</button>
-        <button id="stop-btn" class="push-btn">Stop</button>
-      </div>
-      <div class="app-sessions">
-        <h4>Pomodoros until long break:</h4>
-        <p id="app-sessions-counter">4</p>
-      </div>
-      <div class="app-customize">
-        <button id="customize-btn" class="grey-btn">Customize</button>
-        <button id="stats-btn" class="grey-btn">Your Stats</button>
-      </div>
-    </main>
-
-    <!--Footer-->
-    <footer class="footer"></footer>
-
-    <!--Modals-->
-    <section class="modals modals-background">
-      <!--Help-->
-      <div class="modals-help">
-        <h1>A Pomato a day keeps laziness at bay</h1>
-
-        <!--Section 1-->
-        <div class="modals-help-section">
-          <h2>About Pomato Timer</h2>
-          <div class="modals-help-section-divider"></div>
-          <p>
-            Pomato Timer is a single-page timer webapp created using HTML/CSS
-            and vanilla Javascript. Based on on the Pomodoro timing technique
-            developed in the 1980s, this timer will help you get work done by
-            organizing your time into manageable chunks to maximize your waking
-            hours.
-          </p>
-        </div>
-
-        <!--Section 2-->
-        <div class="modals-help-section">
-          <h2>The Pomodoro Technique</h2>
-          <div class="modals-help-section-divider"></div>
-          <p>
-            The Pomodoro Technique was developed in the late 1980s by then
-            university student Francesco Cirillo. Cirillo was struggling to
-            focus on his studies and complete assignments. Feeling overwhelmed,
-            he asked himself to commit to just 10 minutes of focused study time.
-            Encouraged by the challenge, he found a tomato (pomodoro in Italian)
-            shaped kitchen timer, and the Pomodoro technique was born.
-          </p>
-          <p>
-            The technique is simple, find a task to complete and set aside 25
-            minutes to concentrate on this task. After 25 minutes, you may take
-            a 5 minute break. Count this 25 minute work / 5 minute break as one
-            Pomodoro. After 4 Pomodoros, you may take a 15-30 minute break.
-          </p>
-        </div>
-
-        <!--Section 3-->
-        <div class="modals-help-section">
-          <h2>Features</h2>
-          <div class="modals-help-section-divider"></div>
-          <ul>
-            <li>
-              <p>
-                Click the "Customize" button to (although not technically
-                Pomodoro) alter the time duration of work, short break and long
-                break sessions.
-              </p>
-            </li>
-            <li>
-              <p>
-                Click the "Your Stats" button to track your work and break
-                session. From the bar graph you can see a visual representation
-                of the time spent working and on break. (Each bar graph is
-                permanently set to 6 hours each. Will add feature to change the
-                time goal)
-              </p>
-            </li>
-            <li>
-              <p>
-                "Reset" button will reset the time of the current session
-                (either work, short break or long break). Clicking "Reset" will
-                not impact your stats or reset all session time durations back
-                to the Pomodoro technique standard.
-              </p>
-            </li>
-          </ul>
-        </div>
-
-        <!--Back-->
-        <div class="modals-help-back">
-          <button id="help-back-btn" class="grey-btn">Close</button>
-        </div>
+    <!--Customize-->
+    <section class="modals-customize modal">
+      <div class="modals-customize-default">
+        <button id="default-btn"><span class="default-btn-gear">&#9881</span> Reset to default</button>
       </div>
 
-      <!--Customize-->
-      <div class="modals-customize">
-        <div class="modals-customize-default">
-          <button id="default-btn">Reset to default</button>
-        </div>
-
-        <!--Custom work-->
-        <div class="modals-customize-wbl">
-          <div class="modals-customize-stack">
-            <p>Work</p>
-            <input
-              type="number"
-              name="custom-w"
-              value="25"
-              min="1"
-              max="59"
-              required
-            />
-          </div>
-        </div>
-
-        <!--Custom short break-->
-        <div class="modals-customize-wbl">
-          <div class="modals-customize-stack">
-            <p>Short break</p>
-            <input
-              type="number"
-              name="custom-sb"
-              value="5"
-              min="1"
-              max="59"
-              required
-            />
-          </div>
-        </div>
-
-        <!--Custom long break-->
-        <div class="modals-customize-wbl">
-          <div class="modals-customize-stack">
-            <p>Long break</p>
-            <input
-              type="number"
-              name="custom-lb"
-              value="15"
-              min="1"
-              max="59"
-              required
-            />
-          </div>
-        </div>
-
-        <!--Custom sessions-->
-        <div class="modals-customize-sessions">
-          <p>Sessions</p>
+      <!--Custom work-->
+      <div class="modals-customize-wbl">
+        <div class="modals-customize-stack">
+          <p>Work</p>
           <input
             type="number"
-            name="custom-s"
-            value="4"
+            name="custom-w"
+            value="25"
             min="1"
-            max="10"
+            max="59"
             required
           />
         </div>
+      </div>
 
-        <!--Back-->
-        <div class="modals-customize-back">
-          <button id="customize-back-btn" class="grey-btn">Close</button>
+      <!--Custom short break-->
+      <div class="modals-customize-wbl">
+        <div class="modals-customize-stack">
+          <p>Short break</p>
+          <input
+            type="number"
+            name="custom-sb"
+            value="5"
+            min="1"
+            max="59"
+            required
+          />
         </div>
       </div>
 
-      <!--Statistics-->
-      <div class="modals-stats">
-        <h2>My Stats</h2>
-
-        <!--Stats main-->
-        <div class="modals-stats-main">
-          <!--Chart js-->
-          <div class="modals-stats-main-chart-container">
-            <canvas id="pomatoChart" height="400px" width="400px"></canvas>
-          </div>
-
-          <!--Session counters-->
-          <div class="modals-stats-main-counters">
-            <div class="modals-stats-main-counters-containers">
-              <p>Work sessions completed</p>
-              <p id="w-sessions-counter">0</p>
-            </div>
-            <div class="modals-statas-main-counters-containers">
-              <p>Short breaks completed</p>
-              <p id="sb-sessions-counter">0</p>
-            </div>
-            <div class="modals-statas-main-counters-containers">
-              <p>Long breaks completed</p>
-              <p id="lb-sessions-counter">0</p>
-            </div>
-          </div>
+      <!--Custom long break-->
+      <div class="modals-customize-wbl">
+        <div class="modals-customize-stack">
+          <p>Long break</p>
+          <input
+            type="number"
+            name="custom-lb"
+            value="15"
+            min="1"
+            max="59"
+            required
+          />
         </div>
+      </div>
 
-        <!--Back-->
-        <div class="modals-stats-button">
-          <button id="stats-back-btn" class="grey-btn">Close</button>
-        </div>
+      <!--Custom sessions-->
+      <div class="modals-customize-sessions">
+        <p>Sessions</p>
+        <input
+          type="number"
+          name="custom-s"
+          value="4"
+          min="1"
+          max="10"
+          required
+        />
+      </div>
+
+      <!--Back-->
+      <div class="modals-customize-back">
+        <button id="customize-back-btn" class="grey-btn">Save and close</button>
       </div>
     </section>
+
+    <!--Statistics-->
+    <section class="modals-stats modal">
+      <h2>My Stats</h2>
+
+      <!--Stats main-->
+      <div class="modals-stats-main">
+        <!--Chart js-->
+        <div class="modals-stats-main-chart-container">
+          <canvas id="pomatoChart" height="400px" width="400px"></canvas>
+        </div>
+
+        <!--Session counters-->
+        <div class="modals-stats-main-counters">
+          <div class="modals-stats-main-counters-containers">
+            <p>Work sessions completed</p>
+            <p id="w-sessions-counter">0</p>
+          </div>
+          <div class="modals-statas-main-counters-containers">
+            <p>Short breaks completed</p>
+            <p id="sb-sessions-counter">0</p>
+          </div>
+          <div class="modals-statas-main-counters-containers">
+            <p>Long breaks completed</p>
+            <p id="lb-sessions-counter">0</p>
+          </div>
+        </div>
+      </div>
+
+      <!--Back-->
+      <div class="modals-stats-button">
+        <button id="stats-back-btn" class="grey-btn">Close</button>
+      </div>
+    </section>
+
+    <!--Background-->
+    <div class="modals-background"></div>
   </body>
 </html>
