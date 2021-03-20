@@ -1,25 +1,32 @@
-.hide {
-  opacity: 0;
-  z-index: -1;
-}
-
-.modals-background {
+#modals-background {
   background-color: black;
-  opacity: 0;
+  opacity: 0.7;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: -1;
+  z-index: 1;
 }
 
-/* Stack modals */
+/* position active modal */
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: var(--background);
+  border-radius: 10px;
+}
+
+/*dictates which modal is on top and active*/
+.active {
+  z-index: 2;
+  opacity: 1;
+}
+
+/*dictates hiding the active modal*/
+.hide {
   z-index: -1;
   opacity: 0;
 }

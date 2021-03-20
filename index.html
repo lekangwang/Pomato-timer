@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="css/modal/stats-modal.css">
   </head>
   <body>
-    <div class="app-container">
+    <div id="app-container">
       <!--More info section-->
       <header class="mode">
         <!--Mode indicator-->
@@ -69,8 +69,8 @@
 
     <!------------------------------------------Modals------------------------------------------------------->
     <!--Help-->
-    <section class="modals-help modal">
-      <h1>A Pomato a day keeps laziness at bay</h1>
+    <section class="modals-help modal hide" id="help-container">
+      <h1>A <span style="color: var(--primary);">Pomato</span> a day keeps laziness at <span style="color: navy;">bay</span></h1>
 
       <!--Section 1-->
       <div class="modals-help-section">
@@ -111,28 +111,22 @@
         <div class="modals-help-section-divider"></div>
         <ul>
           <li>
-            <p>
               Click the "Customize" button to (although not technically
               Pomodoro) alter the time duration of work, short break and long
               break sessions.
-            </p>
           </li>
           <li>
-            <p>
               Click the "Your Stats" button to track your work and break
               session. From the bar graph you can see a visual representation
               of the time spent working and on break. (Each bar graph is
               permanently set to 6 hours each. Will add feature to change the
               time goal)
-            </p>
           </li>
           <li>
-            <p>
               "Reset" button will reset the time of the current session
               (either work, short break or long break). Clicking "Reset" will
               not impact your stats or reset all session time durations back
               to the Pomodoro technique standard.
-            </p>
           </li>
         </ul>
       </div>
@@ -143,50 +137,53 @@
       </div>
     </section>
 
-    <!--Customize-->
-    <section class="modals-customize modal">
+    <!----------------------------------Customize------------------------------->
+    <section class="modals-customize modal hide" id="customize-container">
       <div class="modals-customize-default">
-        <button id="default-btn"><span class="default-btn-gear">&#9881</span> Reset to default</button>
+        <button id="default-btn" class="grey-btn"><span class="default-btn-gear">&#9881</span> Reset to default</button>
       </div>
 
-      <!--Custom work-->
-      <div class="modals-customize-wbl">
+      <!--Timers container-->
+      <div class="modals-customize-timers">
+        <!--Custom work-->
         <div class="modals-customize-stack">
           <p>Work</p>
           <input
             type="number"
             name="custom-w"
             value="25"
+            id="custom-w"
+            class="custom-input"
             min="1"
             max="59"
             required
           />
         </div>
-      </div>
 
       <!--Custom short break-->
-      <div class="modals-customize-wbl">
         <div class="modals-customize-stack">
           <p>Short break</p>
           <input
             type="number"
             name="custom-sb"
             value="5"
+            id="custom-sb"
+            class="custom-input"
             min="1"
             max="59"
             required
           />
         </div>
-      </div>
 
       <!--Custom long break-->
-      <div class="modals-customize-wbl">
         <div class="modals-customize-stack">
           <p>Long break</p>
           <input
             type="number"
             name="custom-lb"
             value="15"
+            id="custom-lb"
+            class="custom-input"
             min="1"
             max="59"
             required
@@ -194,49 +191,54 @@
         </div>
       </div>
 
-      <!--Custom sessions-->
-      <div class="modals-customize-sessions">
-        <p>Sessions</p>
-        <input
-          type="number"
-          name="custom-s"
-          value="4"
-          min="1"
-          max="10"
-          required
-        />
-      </div>
 
-      <!--Back-->
-      <div class="modals-customize-back">
-        <button id="customize-back-btn" class="grey-btn">Save and close</button>
+      <div class="modals-customize-sessions">
+        <!--Custom sessions-->
+        <div class="modals-customize-stack">
+          <p>Sessions</p>
+          <input
+            type="number"
+            name="custom-s"
+            value="4"
+            id="custom-s"
+            class="custom-input"
+            min="1"
+            max="10"
+            required
+          />
+        </div>
+
+        <!--Back-->
+        <div class="modals-customize-back">
+          <button id="customize-back-btn" class="grey-btn">Save and close</button>
+        </div>
       </div>
     </section>
 
-    <!--Statistics-->
-    <section class="modals-stats modal">
+    <!-------------------------------------Statistics---------------------------------------------->
+    <section class="modals-stats modal active" id="stats-container">
       <h2>My Stats</h2>
 
       <!--Stats main-->
       <div class="modals-stats-main">
         <!--Chart js-->
         <div class="modals-stats-main-chart-container">
-          <canvas id="pomatoChart" height="400px" width="400px"></canvas>
+          <canvas id="pomato-chart" height="500px" width="500px"></canvas>
         </div>
 
         <!--Session counters-->
         <div class="modals-stats-main-counters">
           <div class="modals-stats-main-counters-containers">
             <p>Work sessions completed</p>
-            <p id="w-sessions-counter">0</p>
+            <p id="w-sessions-counter" class="counter">0</p>
           </div>
-          <div class="modals-statas-main-counters-containers">
+          <div class="modals-stats-main-counters-containers">
             <p>Short breaks completed</p>
-            <p id="sb-sessions-counter">0</p>
+            <p id="sb-sessions-counter" class="counter">0</p>
           </div>
-          <div class="modals-statas-main-counters-containers">
+          <div class="modals-stats-main-counters-containers">
             <p>Long breaks completed</p>
-            <p id="lb-sessions-counter">0</p>
+            <p id="lb-sessions-counter" class="counter">0</p>
           </div>
         </div>
       </div>
@@ -248,6 +250,9 @@
     </section>
 
     <!--Background-->
-    <div class="modals-background"></div>
+    <div id="modals-background"></div>
+
+    <!--js files-->
+    <script src="js/chart.js"></script>
   </body>
 </html>
