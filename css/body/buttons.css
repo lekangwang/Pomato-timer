@@ -1,0 +1,40 @@
+button {
+  cursor: pointer;
+}
+
+.push-btn {
+  background-color: var(--primary);
+  color: var(--background);
+  padding: 1rem 3rem;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  box-shadow: 0 0.5rem var(--secondary);
+  transition: 0.05s ease;
+}
+
+.push-btn:active {
+  border: 2px solid rgb(255, 229, 233);
+  box-shadow: 0 0;
+  transform: translateY(0.5rem);
+  background-color: var(--dark);
+  color: white;
+}
+
+.grey-btn {
+  outline: white;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  background-color: var(--grey);
+  color: var(--dark);
+  transition: 0.05s ease;
+}
+
+.grey-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.grey-btn:active {
+  transform: scale(0.98) translateY(3px);
+}
