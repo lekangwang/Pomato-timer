@@ -12,6 +12,14 @@ button {
   transition: 0.05s ease;
 }
 
+.pressed {
+  border: 2px solid rgb(255, 229, 233);
+  box-shadow: 0 0;
+  transform: translateY(0.5rem);
+  background-color: var(--dark);
+  color: white;
+}
+
 .push-btn:active {
   border: 2px solid rgb(255, 229, 233);
   box-shadow: 0 0;

@@ -115,3 +115,16 @@ const switchMode = function () {
   timerMin.innerText = padWithZeros(newMinutes);
   timerSec.innerText = "00";
 };
+
+//toggle the styling for both start and stop buttons
+const toggleStartStop = function (element) {
+  switch (element) {
+    case startBtn:
+      startBtn.classList.add("pressed");
+      stopBtn.classList.remove("pressed");
+      break;
+    default:
+      startBtn.classList.remove("pressed");
+      stopBtn.classList.add("pressed");
+  }
+};
