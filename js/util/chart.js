@@ -22,7 +22,8 @@ const myChart = new Chart(pomatoChart, {
           ticks: {
             beginAtZero: true,
             precision: 0,
-            stepSize: 1,
+            // stepSize: 1,
+            // max: findMaxBarVal() + 10,
           },
         },
       ],

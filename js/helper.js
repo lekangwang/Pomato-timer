@@ -43,10 +43,8 @@ const updateModeText = function (mode) {
 const calcTimeElapsed = function () {
   let initialMin;
   const currentMode = findCurrentMode();
-  const minutes = Number(timerSec.innerText),
+  const minutes = Number(timerMin.innerText),
     seconds = Number(timerSec.innerText);
-  const timeElapsed =
-    seconds === 0 ? initialMin - minutes : initialMin - minutes - 1;
 
   switch (currentMode) {
     case "work":
@@ -59,12 +57,16 @@ const calcTimeElapsed = function () {
       initialMin = Number(customLongBreak.value);
   }
 
+  const timeElapsed =
+    seconds === 0 ? initialMin - minutes : initialMin - minutes - 1;
+
   //add elapsed time to the correct bar in the chart
   if (currentMode === "work") {
     myChart.data.datasets[0].data[0] += timeElapsed;
   } else {
     myChart.data.datasets[0].data[1] += timeElapsed;
   }
+  myChart.update();
 };
 
 //update current mode var, regulate sessions, updating HTML timer with new time
@@ -127,4 +129,19 @@ const toggleStartStop = function (element) {
       startBtn.classList.remove("pressed");
       stopBtn.classList.add("pressed");
   }
+};
+
+//hide or show target modal
+const toggleModal = function (modal) {
+  modal.classList.toggle("hide");
+  modal.classList.toggle("active");
+  modalBackground.classList.toggle("hide");
+};
+
+//find the bar in the bar chart that has the highest value
+const findMaxBarVal = function () {
+  const workMin = myChart.data.datasets[0].data[0];
+  const breakMin = myChart.data.datasets[0].data[1];
+
+  return Math.max(workMin, breakMin);
 };

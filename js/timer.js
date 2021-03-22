@@ -7,6 +7,20 @@ const decrementTime = function () {
   let seconds = Number(timerSec.innerText);
   if (minutes === 0 && seconds === 0) {
     stopTimer();
+    //remove pressed class from start button
+    startBtn.classList.remove("pressed");
+    //update work/break sessions completed
+    const currentMode = findCurrentMode();
+    switch (currentMode) {
+      case "work":
+        statsWork.innerText++;
+        break;
+      case "shortBreak":
+        statsShortBreaks.innerText++;
+        break;
+      default:
+        statsLongBreaks.innerText++;
+    }
     calcTimeElapsed(); // Chart update doesn't work
     switchMode();
   } else if (seconds === 0) {
