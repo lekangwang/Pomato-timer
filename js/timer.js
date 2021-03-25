@@ -2,6 +2,7 @@
 
 //evalute the current state of clock and decides what to decrement or stop
 const decrementTime = function () {
+  updateTitle();
   //decrement minutes if seconds is 00
   let minutes = Number(timerMin.innerText);
   let seconds = Number(timerSec.innerText);
@@ -21,10 +22,10 @@ const decrementTime = function () {
       default:
         statsLongBreaks.innerText++;
     }
-    calcTimeElapsed(); // Chart update doesn't work
     switchMode();
   } else if (seconds === 0) {
     minutes--;
+    addMinuteToGraph();
     timerMin.innerText = padWithZeros(minutes);
     timerSec.innerText = 59;
   } else {

@@ -40,31 +40,14 @@ const updateModeText = function (mode) {
   }
 };
 
-const calcTimeElapsed = function () {
-  let initialMin;
+const addMinuteToGraph = function () {
   const currentMode = findCurrentMode();
-  const minutes = Number(timerMin.innerText),
-    seconds = Number(timerSec.innerText);
-
-  switch (currentMode) {
-    case "work":
-      initialMin = Number(customWork.value);
-      break;
-    case "shortBreak":
-      initialMin = Number(customShortBreak.value);
-      break;
-    default:
-      initialMin = Number(customLongBreak.value);
-  }
-
-  const timeElapsed =
-    seconds === 0 ? initialMin - minutes : initialMin - minutes - 1;
 
   //add elapsed time to the correct bar in the chart
   if (currentMode === "work") {
-    myChart.data.datasets[0].data[0] += timeElapsed;
+    myChart.data.datasets[0].data[0]++;
   } else {
-    myChart.data.datasets[0].data[1] += timeElapsed;
+    myChart.data.datasets[0].data[1]++;
   }
   myChart.update();
 };
@@ -116,6 +99,7 @@ const switchMode = function () {
   const newMinutes = modes[indexOfNewMode][currentMode];
   timerMin.innerText = padWithZeros(newMinutes);
   timerSec.innerText = "00";
+  updateTitle();
 };
 
 //toggle the styling for both start and stop buttons
@@ -144,4 +128,23 @@ const findMaxBarVal = function () {
   const breakMin = myChart.data.datasets[0].data[1];
 
   return Math.max(workMin, breakMin);
+};
+
+//update html tab title
+const updateTitle = function () {
+  const currentMode = findCurrentMode();
+  let currentTitle = `${timerMin.innerText} : ${timerSec.innerText}`;
+
+  switch (currentMode) {
+    case "work":
+      currentTitle += " - Time to work!";
+      break;
+    case "shortBreak":
+      currentTitle += " - Phew, good work...";
+      break;
+    default:
+      currentTitle += " - Take a breath";
+  }
+
+  document.title = currentTitle;
 };

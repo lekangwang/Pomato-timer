@@ -16,9 +16,6 @@ resetBtn.addEventListener("click", () => {
   stopBtn.classList.remove("pressed");
   stopTimer();
 
-  //track time elapsed and add to appropriate bar
-  calcTimeElapsed();
-
   const currentMode = findCurrentMode();
   let minutes;
   switch (currentMode) {
@@ -34,6 +31,7 @@ resetBtn.addEventListener("click", () => {
 
   timerMin.innerText = padWithZeros(minutes);
   timerSec.innerText = "00";
+  updateTitle();
 });
 
 stopBtn.addEventListener("click", () => {
@@ -58,23 +56,31 @@ customizeDefaultBtn.addEventListener("click", () => {
 customBackBtn.addEventListener("click", () => {
   toggleModal(customizeModal);
 
-  //track minutes elapsed when modal opened
-  calcTimeElapsed();
-
   //reset the current timer to new time
   const currentMode = findCurrentMode();
-  switch (currentMode) {
-    case "work":
-      timerMin.innerText = customWork.value;
-      break;
-    case "shortBreak":
-      timerMin.innerText = customShortBreak.value;
-      break;
-    default:
-      timerMin.innerText = customLongBreak.value;
+
+  if (currentMode === "work" && customWork.value !== prevWork) {
+    timerMin.innerText = customWork.value;
+    timerSec.innerText = "00";
+  } else if (
+    currentMode === "shortBreak" &&
+    customShortBreak.value !== prevShortBreak
+  ) {
+    timerMin.innerText = customShortBreak.value;
+    timerSec.innerText = "00";
+  } else if (
+    currentMode === "longBreak" &&
+    customLongBreak.value !== prevLongBreak
+  ) {
+    timerMin.innerText = customLongBreak.value;
+    timerSec.innerText = "00";
   }
 
-  timerSec.innerText = "00";
+  if (timerSessions.innerText === prevSessions) {
+    //only update max sessions when on first pomodoro in a new pomodoro cycle
+    timerSessions.innerText = customSessions.value;
+  }
+  updateTitle();
 });
 
 //Stats modal
