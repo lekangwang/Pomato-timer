@@ -33,6 +33,7 @@ const customShortBreak = document.getElementById("custom-sb");
 const customLongBreak = document.getElementById("custom-lb");
 const customSessions = document.getElementById("custom-s");
 const customBackBtn = document.getElementById("customize-back-btn");
+const customUpdateBtn = document.getElementById("update-btn");
 
 //stats modal
 const statsWork = document.getElementById("w-sessions-counter");

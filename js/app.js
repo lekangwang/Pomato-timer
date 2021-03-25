@@ -44,6 +44,7 @@ customizeBtn.addEventListener("click", () => {
   stopTimer();
   toggleStartStop(stopBtn);
   toggleModal(customizeModal);
+  customUpdateBtn.innerHTML = `Update ${timerMode.innerText} timer now`;
 });
 
 customizeDefaultBtn.addEventListener("click", () => {
@@ -55,31 +56,21 @@ customizeDefaultBtn.addEventListener("click", () => {
 
 customBackBtn.addEventListener("click", () => {
   toggleModal(customizeModal);
+});
 
-  //reset the current timer to new time
+customUpdateBtn.addEventListener("click", () => {
   const currentMode = findCurrentMode();
-
-  if (currentMode === "work" && customWork.value !== prevWork) {
-    timerMin.innerText = customWork.value;
-    timerSec.innerText = "00";
-  } else if (
-    currentMode === "shortBreak" &&
-    customShortBreak.value !== prevShortBreak
-  ) {
-    timerMin.innerText = customShortBreak.value;
-    timerSec.innerText = "00";
-  } else if (
-    currentMode === "longBreak" &&
-    customLongBreak.value !== prevLongBreak
-  ) {
-    timerMin.innerText = customLongBreak.value;
-    timerSec.innerText = "00";
+  switch (currentMode) {
+    case "work":
+      timerMin.innerText = padWithZeros(customWork.value);
+      break;
+    case "shortBreak":
+      timerMin.innerText = padWithZeros(customShortBreak.value);
+      break;
+    default:
+      timerMin.innerText = padWithZeros(customLongBreak.value);
   }
-
-  if (timerSessions.innerText === prevSessions) {
-    //only update max sessions when on first pomodoro in a new pomodoro cycle
-    timerSessions.innerText = customSessions.value;
-  }
+  timerSec.innerText = "00";
   updateTitle();
 });
 
