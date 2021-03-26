@@ -81,10 +81,17 @@ const switchMode = function () {
   //updating current mode global variable
   if (currentMode === "work") {
     currentMode = "shortBreak";
+    document.body.style = "background-color: var(--tertiary);";
+    timerSessionsHeader.style = "opacity: 1;";
   } else if (sessionsLeft === 0) {
     currentMode = "longBreak";
+    document.body.style =
+      "background-color: var(--dark); color: white !important;";
+    timerSessionsHeader.style = "opacity: 0;";
   } else {
     currentMode = "work";
+    document.body.style = "background-color: var(--background);";
+    timerSessionsHeader.style = "opacity: 1;";
   }
 
   updateModeText(currentMode);
@@ -140,11 +147,27 @@ const updateTitle = function () {
       currentTitle += " - Time to work!";
       break;
     case "shortBreak":
-      currentTitle += " - Phew, good work...";
+      currentTitle += " - Phew, take a breather...";
       break;
     default:
-      currentTitle += " - Take a breath";
+      currentTitle += " - You deserve a break :)";
   }
 
   document.title = currentTitle;
+};
+
+const playSound = (ev) => {
+  let btn = ev.currentTarget;
+  let soundDesc = btn.getAttribute("data-file");
+  let src = "./sound-effects/" + soundDesc + ".mp3";
+  audioElement.src = src;
+  audioElement.volume = 1;
+  audioElement.play();
+};
+
+const playAlarm = (ev) => {
+  let src = "./sound-effects/alarm.mp3";
+  audioElement.src = src;
+  audioElement.volume = 0.2;
+  audioElement.play();
 };

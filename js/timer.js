@@ -1,12 +1,13 @@
 "use strict";
 
 //evalute the current state of clock and decides what to decrement or stop
-const decrementTime = function () {
+const decrementTime = function (e) {
   updateTitle();
   //decrement minutes if seconds is 00
   let minutes = Number(timerMin.innerText);
   let seconds = Number(timerSec.innerText);
   if (minutes === 0 && seconds === 0) {
+    playAlarm(e);
     stopTimer();
     //remove pressed class from start button
     startBtn.classList.remove("pressed");

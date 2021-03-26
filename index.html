@@ -42,22 +42,22 @@
             <span id="app-timer-seconds">00</span>
           </h1>
           <div class="app-controls">
-            <button id="start-btn" class="push-btn">Start</button>
-            <button id="reset-btn" class="push-btn">Reset</button>
-            <button id="stop-btn" class="push-btn">Stop</button>
+            <button data-file="click" id="start-btn" class="push-btn">Start</button>
+            <button data-file="click" id="reset-btn" class="push-btn">Reset</button>
+            <button data-file="click" id="stop-btn" class="push-btn">Stop</button>
           </div>
         </div>
 
         <!--sessions/more options-->
         <div class="app-sessions-container">
           <div class="app-sessions">
-            <h4>Pomodoros remaining</h4>
+            <h4 id="session-counter-header">Pomodoros remaining</h4>
             <p id="app-sessions-counter">4</p>
           </div>
           <div class="app-customize">
-            <button id="customize-btn" class="grey-btn">Customize</button>
-            <button id="stats-btn" class="grey-btn">Your Stats</button>
-            <button id="help-btn" class="grey-btn">More info</button>
+            <button data-file="secondary-click" id="customize-btn" class="grey-btn">Customize</button>
+            <button data-file="secondary-click" id="stats-btn" class="grey-btn">Your Stats</button>
+            <button data-file="secondary-click" id="help-btn" class="grey-btn">More info</button>
           </div>
         </div>
       </main>
@@ -132,14 +132,14 @@
 
       <!--Back-->
       <div class="modals-help-back">
-        <button id="help-back-btn" class="grey-btn">Close</button>
+        <button data-file="secondary-click" id="help-back-btn" class="grey-btn">Close</button>
       </div>
     </section>
 
     <!----------------------------------Customize------------------------------->
     <section class="modals-customize modal hide" id="customize-container">
       <div class="modals-customize-default">
-        <button id="default-btn" class="grey-btn"><span class="default-btn-gear">&#9881</span> Reset to default</button>
+        <button data-file="click2" id="default-btn" class="grey-btn"><span class="default-btn-gear">&#9881</span> Reset to default</button>
       </div>
 
       <!--Timers container-->
@@ -191,7 +191,7 @@
       </div>
 
       <section>
-        <button class="grey-btn" id="update-btn">Update Work timer now</button>
+        <button data-file="secondary-click" class="grey-btn" id="update-btn">Update Work timer now</button>
       </section>
 
 
@@ -213,7 +213,7 @@
 
         <!--Back-->
         <div class="modals-customize-back">
-          <button id="customize-back-btn" class="grey-btn">Save and close</button>
+          <button data-file="secondary-click" id="customize-back-btn" class="grey-btn">Save and close</button>
         </div>
       </div>
     </section>
@@ -248,12 +248,13 @@
 
       <!--Back-->
       <div class="modals-stats-button">
-        <button id="stats-back-btn" class="grey-btn">Close</button>
+        <button data-file="secondary-click" id="stats-back-btn" class="grey-btn">Close</button>
       </div>
     </section>
 
     <!--Background-->
     <div id="modals-background" class="hide"></div>
+    <audio id="audio-element"></audio>
 
     <!--js files-->
     <script src="js/util/declarations.js"></script>

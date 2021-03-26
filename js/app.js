@@ -4,14 +4,18 @@
 let runTimer; //stores the settimeout function
 
 //event listeners
-startBtn.addEventListener("click", () => {
+startBtn.addEventListener("click", (e) => {
+  playSound(e);
   toggleStartStop(startBtn);
   if (runTimer === undefined) {
-    runTimer = setInterval(decrementTime, 1);
+    runTimer = setInterval(() => {
+      decrementTime(e);
+    }, 1);
   }
 });
 
-resetBtn.addEventListener("click", () => {
+resetBtn.addEventListener("click", (e) => {
+  playSound(e);
   startBtn.classList.remove("pressed");
   stopBtn.classList.remove("pressed");
   stopTimer();
@@ -34,31 +38,36 @@ resetBtn.addEventListener("click", () => {
   updateTitle();
 });
 
-stopBtn.addEventListener("click", () => {
+stopBtn.addEventListener("click", (e) => {
+  playSound(e);
   toggleStartStop(stopBtn);
   stopTimer();
 });
 
 //Customize modal
-customizeBtn.addEventListener("click", () => {
+customizeBtn.addEventListener("click", (e) => {
+  playSound(e);
   stopTimer();
   toggleStartStop(stopBtn);
   toggleModal(customizeModal);
   customUpdateBtn.innerHTML = `Update ${timerMode.innerText} timer now`;
 });
 
-customizeDefaultBtn.addEventListener("click", () => {
+customizeDefaultBtn.addEventListener("click", (e) => {
+  playSound(e);
   customWork.value = "25";
   customShortBreak.value = "5";
   customLongBreak.value = "15";
   customSessions.value = "4";
 });
 
-customBackBtn.addEventListener("click", () => {
+customBackBtn.addEventListener("click", (e) => {
+  playSound(e);
   toggleModal(customizeModal);
 });
 
-customUpdateBtn.addEventListener("click", () => {
+customUpdateBtn.addEventListener("click", (e) => {
+  playSound(e);
   const currentMode = findCurrentMode();
   switch (currentMode) {
     case "work":
@@ -75,23 +84,27 @@ customUpdateBtn.addEventListener("click", () => {
 });
 
 //Stats modal
-statsBtn.addEventListener("click", () => {
+statsBtn.addEventListener("click", (e) => {
+  playSound(e);
   stopTimer();
   toggleStartStop(stopBtn);
   toggleModal(statsModal);
 });
 
-statsBackBtn.addEventListener("click", () => {
+statsBackBtn.addEventListener("click", (e) => {
+  playSound(e);
   toggleModal(statsModal);
 });
 
 //More info modal
-helpBtn.addEventListener("click", () => {
+helpBtn.addEventListener("click", (e) => {
+  playSound(e);
   stopTimer();
   toggleStartStop(stopBtn);
   toggleModal(helpModal);
 });
 
-helpBackBtn.addEventListener("click", () => {
+helpBackBtn.addEventListener("click", (e) => {
+  playSound(e);
   toggleModal(helpModal);
 });

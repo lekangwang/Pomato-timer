@@ -12,6 +12,7 @@ const timerMode = document.getElementById("mode-mode");
 const timerMin = document.getElementById("app-timer-minutes");
 const timerSec = document.getElementById("app-timer-seconds");
 const timerSessions = document.getElementById("app-sessions-counter");
+const timerSessionsHeader = document.getElementById("session-counter-header");
 
 //control buttons
 const startBtn = document.getElementById("start-btn");
@@ -40,3 +41,6 @@ const statsWork = document.getElementById("w-sessions-counter");
 const statsShortBreaks = document.getElementById("sb-sessions-counter");
 const statsLongBreaks = document.getElementById("lb-sessions-counter");
 const statsBackBtn = document.getElementById("stats-back-btn");
+
+//audio
+const audioElement = document.getElementById("audio-element");
