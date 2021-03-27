@@ -6,6 +6,7 @@ const helpModal = document.getElementById("help-container");
 const customizeModal = document.getElementById("customize-container");
 const statsModal = document.getElementById("stats-container");
 const modalBackground = document.getElementById("modals-background");
+const appBackground = document.getElementById("app-background");
 
 //main timer
 const timerMode = document.getElementById("mode-mode");

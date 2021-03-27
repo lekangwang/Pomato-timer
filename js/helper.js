@@ -81,16 +81,18 @@ const switchMode = function () {
   //updating current mode global variable
   if (currentMode === "work") {
     currentMode = "shortBreak";
-    document.body.style = "background-color: var(--tertiary);";
+    appBackground.style = "background-color: var(--tertiary);";
+    document.body.style = "color: black !important;";
     timerSessionsHeader.style = "opacity: 1;";
   } else if (sessionsLeft === 0) {
     currentMode = "longBreak";
-    document.body.style =
-      "background-color: var(--dark); color: white !important;";
+    appBackground.style = "background-color: var(--dark);";
+    document.body.style = "color: white !important;";
     timerSessionsHeader.style = "opacity: 0;";
   } else {
     currentMode = "work";
-    document.body.style = "background-color: var(--background);";
+    appBackground.style = "background-color: var(--background);";
+    document.body.style = "color: black !important;";
     timerSessionsHeader.style = "opacity: 1;";
   }
 

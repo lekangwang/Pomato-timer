@@ -7,6 +7,7 @@ const decrementTime = function (e) {
   let minutes = Number(timerMin.innerText);
   let seconds = Number(timerSec.innerText);
   if (minutes === 0 && seconds === 0) {
+    addMinuteToGraph();
     playAlarm(e);
     stopTimer();
     //remove pressed class from start button
@@ -25,8 +26,10 @@ const decrementTime = function (e) {
     }
     switchMode();
   } else if (seconds === 0) {
+    if (minutes <= +customWork.value - 1) {
+      addMinuteToGraph();
+    }
     minutes--;
-    addMinuteToGraph();
     timerMin.innerText = padWithZeros(minutes);
     timerSec.innerText = 59;
   } else {
