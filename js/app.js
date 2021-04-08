@@ -10,7 +10,7 @@ startBtn.addEventListener("click", (e) => {
   if (runTimer === undefined) {
     runTimer = setInterval(() => {
       decrementTime(e);
-    }, 100);
+    }, 1000);
   }
 });
 
