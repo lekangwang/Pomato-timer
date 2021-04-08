@@ -10,7 +10,7 @@ startBtn.addEventListener("click", (e) => {
   if (runTimer === undefined) {
     runTimer = setInterval(() => {
       decrementTime(e);
-    }, 1);
+    }, 100);
   }
 });
 
@@ -96,6 +96,16 @@ statsBackBtn.addEventListener("click", (e) => {
   toggleModal(statsModal);
 });
 
+modalBackground.addEventListener("click", () => {
+  if (customizeModal.classList.contains("active")) {
+    toggleModal(customizeModal);
+  } else if (statsModal.classList.contains("active")) {
+    toggleModal(statsModal);
+  } else {
+    toggleModal(helpModal);
+  }
+});
+
 //More info modal
 helpBtn.addEventListener("click", (e) => {
   playSound(e);
@@ -109,6 +119,6 @@ helpBackBtn.addEventListener("click", (e) => {
   toggleModal(helpModal);
 });
 
-window.onbeforeunload = function () {
-  return "Dude, are you sure you want to leave? Think of the kittens!";
-};
+// window.onbeforeunload = function () {
+//   return "Dude, are you sure you want to leave? Think of the kittens!";
+// };

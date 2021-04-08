@@ -10,6 +10,7 @@ const appBackground = document.getElementById("app-background");
 
 //main timer
 const timerMode = document.getElementById("mode-mode");
+const timerColon = document.getElementById("app-timer-colon");
 const timerMin = document.getElementById("app-timer-minutes");
 const timerSec = document.getElementById("app-timer-seconds");
 const timerSessions = document.getElementById("app-sessions-counter");

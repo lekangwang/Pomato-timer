@@ -24,6 +24,9 @@
     <link rel="stylesheet" href="css/modal/help-modal.css">
     <link rel="stylesheet" href="css/modal/custom-modal.css">
     <link rel="stylesheet" href="css/modal/stats-modal.css">
+
+    <!--media queries-->
+    <link rel="stylesheet" href="css/responsive.css">
   </head>
   <body>
     <div id="app-container">
@@ -38,7 +41,7 @@
         <!--Timer-->
         <div class="app-timer-container">
           <h1 class="app-timer">
-            <span id="app-timer-minutes">25</span> :
+            <span id="app-timer-minutes">25</span> <span id="app-timer-colon">:</span>
             <span id="app-timer-seconds">00</span>
           </h1>
           <div class="app-controls">
@@ -194,10 +197,9 @@
         <button data-file="secondary-click" class="grey-btn" id="update-btn">Update Work timer now</button>
       </section>
 
-
       <div class="modals-customize-sessions">
         <!--Custom sessions-->
-        <div class="modals-customize-stack" style="margin: 0.5rem;">
+        <div class="modals-customize-stack">
           <p>Sessions</p>
           <input
             type="number"

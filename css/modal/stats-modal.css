@@ -1,31 +1,33 @@
 .modals-stats {
-  width: 50%;
-  height: 70%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+  overflow-y: scroll;
+  width: 65%;
+  height: 90%;
+  padding: 2rem 0;
+}
+
+h2 {
+  text-align: center;
+  padding-bottom: 1rem;
 }
 
 .modals-stats-main {
   display: flex;
   width: 100%;
-  height: 60%;
   justify-content: space-around;
   align-items: center;
+  flex-direction: column;
   padding: 0 2rem;
 }
 
 .modals-stats-main-chart-container {
-  position: relative;
-  width: 60%;
+  width: 90%;
+  display: flex;
+  justify-content: center;
 }
 
 .modals-stats-main-counters {
-  width: 40%;
-  height: 100%;
+  width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: space-around;
 }
@@ -36,9 +38,21 @@
   align-items: center;
   justify-content: center;
   font-size: 1.3rem;
+  margin: 1.5rem 0;
+  width: 15rem;
+}
+
+.modals-stats-main-counters-containers p {
+  text-align: center;
 }
 
 .counter {
   font-size: 3rem;
   margin: 0.5rem;
+}
+
+.modals-stats-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }

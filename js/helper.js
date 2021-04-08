@@ -82,17 +82,29 @@ const switchMode = function () {
   if (currentMode === "work") {
     currentMode = "shortBreak";
     appBackground.style = "background-color: var(--tertiary);";
-    document.body.style = "color: black !important;";
+    timerMode.style = "color: black;";
+    timerMin.style = "color: black;";
+    timerSec.style = "color: black;";
+    timerColon.style = "color: black;";
+    timerSessions.style = "color: black;";
     timerSessionsHeader.style = "opacity: 1;";
   } else if (sessionsLeft === 0) {
     currentMode = "longBreak";
     appBackground.style = "background-color: var(--dark);";
-    document.body.style = "color: white !important;";
+    timerMode.style = "color: white;";
+    timerMin.style = "color: white;";
+    timerSec.style = "color: white;";
+    timerColon.style = "color: white;";
+    timerSessions.style = "color: white;";
     timerSessionsHeader.style = "opacity: 0;";
   } else {
     currentMode = "work";
     appBackground.style = "background-color: var(--background);";
-    document.body.style = "color: black !important;";
+    timerMode.style = "color: black;";
+    timerMin.style = "color: black;";
+    timerSec.style = "color: black;";
+    timerColon.style = "color: black;";
+    timerSessions.style = "color: black;";
     timerSessionsHeader.style = "opacity: 1;";
   }
 

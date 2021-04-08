@@ -1,0 +1,135 @@
+@media (max-width: 1150px) {
+  .modals-customize {
+    width: 70%;
+  }
+}
+
+@media (max-width: 700px) {
+  .modals-customize {
+    width: 80%;
+  }
+
+  /*--help modal--*/
+  .modals-help {
+    width: 80%;
+  }
+
+  /*--stats modal--*/
+  .modals-stats {
+    width: 80%;
+    padding: 2rem 0;
+  }
+
+  .modals-stats-main-chart-container {
+    width: 100%;
+  }
+
+  .modals-stats-main-counters {
+    width: 100%;
+    margin: 1.5rem 0;
+    flex-direction: column;
+  }
+
+  .modals-stats-main-counters-containers {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+}
+
+@media (max-width: 570px) {
+  .app-timer {
+    font-size: 6rem;
+  }
+
+  .app-customize button {
+    font-size: 0.9rem;
+  }
+
+  #session-counter-header {
+    font-size: 1.2rem;
+  }
+
+  #app-sessions-counter {
+    font-size: 2rem;
+  }
+
+  /*------ Customize Modal --------*/
+  .modals-customize {
+    width: 90%;
+  }
+
+  .modals-customize-stack {
+    height: 3rem;
+  }
+
+  .custom-input {
+    width: 7rem;
+  }
+}
+
+@media (max-width: 470px) {
+  .modals-customize {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(10, 1fr);
+    width: 95%;
+    gap: 1rem;
+  }
+
+  .modals-customize-default {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modals-customize-timers {
+    grid-column: 1 / 2;
+    grid-row: 1 / 10;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .modals-customize-stack {
+    margin: 1rem;
+  }
+
+  .modals-customize section {
+    grid-column: 2 / 3;
+    grid-row: 3 / 6;
+  }
+
+  .modals-customize-sessions {
+    grid-column: 2 / 3;
+    grid-row: 6 / 10;
+  }
+
+  .modals-customize button {
+    font-size: 0.9rem;
+    padding: 0.3 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /*--stats modal--*/
+  .modals-stats {
+    width: 90%;
+    padding: 2rem 0;
+  }
+
+  /*--help modal--*/
+  .modals-help {
+    width: 90%;
+  }
+}
+
+@media (max-width: 360px) {
+}
+
+@media (orientation: landscape) {
+  body {
+    padding-bottom: 5rem;
+  }
+}
