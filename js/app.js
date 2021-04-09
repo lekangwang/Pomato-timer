@@ -119,6 +119,6 @@ helpBackBtn.addEventListener("click", (e) => {
   toggleModal(helpModal);
 });
 
-// window.onbeforeunload = function () {
-//   return "Dude, are you sure you want to leave? Think of the kittens!";
-// };
+window.onbeforeunload = function () {
+  return "Dude, are you sure you want to leave?";
+};

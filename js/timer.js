@@ -24,6 +24,7 @@ const decrementTime = function (e) {
         statsLongBreaks.innerText++;
     }
     switchMode();
+    updateTitle();
   } else if (seconds === 0) {
     let customModeMin;
     switch (currentMode) {
@@ -42,8 +43,10 @@ const decrementTime = function (e) {
     minutes--;
     timerMin.innerText = padWithZeros(minutes);
     timerSec.innerText = 59;
+    updateTitle();
   } else {
     seconds--;
     timerSec.innerText = padWithZeros(seconds);
+    updateTitle();
   }
 };
