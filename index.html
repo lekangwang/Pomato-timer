@@ -8,16 +8,15 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     <link rel="icon" type="image/png" href="pomato-logo.png?" />
     <title>Pomato Timer</title>
-
     <!--css files-->
     <link rel="stylesheet" href="css/app/app-container.css">
     <link rel="stylesheet" href="css/app/app.css">
     <link rel="stylesheet" href="css/app/mode.css">
 
     <!--general css files-->
-    <link rel="stylesheet" href="css/body/body.css">
-    <link rel="stylesheet" href="css/body/buttons.css">
-    <link rel="stylesheet" href="css/body/footer.css">
+    <link rel="stylesheet" href="css/layout/body.css">
+    <link rel="stylesheet" href="css/layout/buttons.css">
+    <link rel="stylesheet" href="css/layout/footer.css">
 
     <!--modal css files-->
     <link rel="stylesheet" href="css/modal/modal.css">
@@ -41,13 +40,12 @@
         <!--Timer-->
         <div class="app-timer-container">
           <h1 class="app-timer">
-            <span id="app-timer-minutes">25</span> <span id="app-timer-colon">:</span>
-            <span id="app-timer-seconds">00</span>
+            <span id="app-timer-minutes">25</span> <span id="app-timer-colon">:</span> <span id="app-timer-seconds">00</span>
           </h1>
           <div class="app-controls">
-            <button data-file="click" id="start-btn" class="push-btn">Start</button>
-            <button data-file="click" id="reset-btn" class="push-btn">Reset</button>
-            <button data-file="click" id="stop-btn" class="push-btn">Stop</button>
+            <button data-file="click" data-btn="start" id="start-btn" class="push-btn">Start</button>
+            <button data-file="click" data-btn="stop" id="stop-btn" class="push-btn">Stop</button>
+            <button data-file="click" data-btn="reset" id="reset-btn" class="push-btn">Reset</button>
           </div>
         </div>
 
@@ -58,9 +56,9 @@
             <p id="app-sessions-counter">4</p>
           </div>
           <div class="app-customize">
-            <button data-file="secondary-click" id="customize-btn" class="grey-btn">Customize</button>
-            <button data-file="secondary-click" id="stats-btn" class="grey-btn">Your Stats</button>
-            <button data-file="secondary-click" id="help-btn" class="grey-btn">More info</button>
+            <button data-file="secondary-click" data-btn="custom" id="customize-btn" class="grey-btn">Customize</button>
+            <button data-file="secondary-click" data-btn="stats" id="stats-btn" class="grey-btn">Your Stats</button>
+            <button data-file="secondary-click" data-btn="help" id="help-btn" class="grey-btn">More info</button>
           </div>
         </div>
       </main>
@@ -192,7 +190,7 @@
       </div>
 
       <section>
-        <button data-file="secondary-click" class="grey-btn" id="update-btn">Update Work timer now</button>
+        <button data-file="secondary-click" class="grey-btn" id="update-btn">Update timer now</button>
       </section>
 
       <div class="modals-customize-sessions">
@@ -259,9 +257,10 @@
 
     <!--js files-->
     <script src="js/util/declarations.js"></script>
-    <script src="js/util/chart.js"></script>
     <script src="js/helper.js"></script>
+    <script src="js/util/chart.js"></script>
     <script src="js/timer.js"></script>
+    <script src="js/sound.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>

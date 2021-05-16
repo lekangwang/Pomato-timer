@@ -4,56 +4,70 @@
 let runTimer; //stores the settimeout function
 
 //event listeners
-startBtn.addEventListener("click", (e) => {
-  playSound(e);
-  toggleStartStop(startBtn);
-  if (runTimer === undefined) {
-    runTimer = setInterval(() => {
-      decrementTime(e);
-    }, 1000);
+appControlsContainer.addEventListener("click", function (e) {
+  if (!e.target.classList.contains("push-btn")) return;
+  if (e.target.dataset.btn === "start") {
+    toggleStartStop(startBtn);
+    if (!runTimer) {
+      runTimer = setInterval(() => decrementTime(e), 1000);
+    }
+  } else if (e.target.dataset.btn === "stop") {
+    stopTimer();
+    toggleStartStop(stopBtn);
+  } else {
+    stopTimer();
+    const minutes = determineMinutes(findCurrentMode());
+    startBtn.classList.remove("pressed");
+    stopBtn.classList.remove("pressed");
+    timerMin.innerText = padWithZeros(minutes);
+    timerSec.innerText = "00";
+    updateTitle();
   }
+  playSound(e);
 });
 
-resetBtn.addEventListener("click", (e) => {
-  playSound(e);
-  startBtn.classList.remove("pressed");
-  stopBtn.classList.remove("pressed");
+modalControlsContainer.addEventListener("click", function (e) {
+  if (!e.target.classList.contains("grey-btn")) return;
   stopTimer();
-
-  const currentMode = findCurrentMode();
-  let minutes;
-  switch (currentMode) {
-    case "work":
-      minutes = +customWork.value;
-      break;
-    case "shortBreak":
-      minutes = +customShortBreak.value;
-      break;
-    default:
-      minutes = +customLongBreak.value;
-  }
-
-  timerMin.innerText = padWithZeros(minutes);
-  timerSec.innerText = "00";
-  updateTitle();
-});
-
-stopBtn.addEventListener("click", (e) => {
-  playSound(e);
   toggleStartStop(stopBtn);
-  stopTimer();
+  if (e.target.id === "customize-btn") {
+    toggleModal(customizeModal);
+  } else if (e.target.id === "stats-btn") {
+    toggleModal(statsModal);
+  } else {
+    toggleModal(helpModal);
+  }
+  playSound(e);
+});
+
+const backBtnHandler = function (modal, e) {
+  toggleModal(modal);
+  playSound(e);
+};
+
+customBackBtn.addEventListener("click", function (e) {
+  const currentMode = findCurrentMode();
+  if (currentMode === "work") {
+    timerMin.innerText = padWithZeros(customWork.value);
+  } else if (currentMode === "shortBreak") {
+    timerMin.innerText = padWithZeros(customWork.value);
+  } else {
+    timerMin.innerText = padWithZeros(customLongBreak.value);
+  }
+  timerSec.innerText = "00";
+  timerSessions.innerText = customSessions.value;
+  updateTitle();
+  backBtnHandler(customizeModal, e);
+});
+statsBackBtn.addEventListener("click", function (e) {
+  backBtnHandler(statsModal, e);
+});
+helpBackBtn.addEventListener("click", function (e) {
+  backBtnHandler(helpModal, e);
 });
 
 //Customize modal
-customizeBtn.addEventListener("click", (e) => {
-  playSound(e);
-  stopTimer();
-  toggleStartStop(stopBtn);
-  toggleModal(customizeModal);
-  customUpdateBtn.innerHTML = `Update ${timerMode.innerText} timer now`;
-});
-
-customizeDefaultBtn.addEventListener("click", (e) => {
+customizeDefaultBtn.addEventListener("click", function (e) {
   playSound(e);
   customWork.value = "25";
   customShortBreak.value = "5";
@@ -61,42 +75,7 @@ customizeDefaultBtn.addEventListener("click", (e) => {
   customSessions.value = "4";
 });
 
-customBackBtn.addEventListener("click", (e) => {
-  playSound(e);
-  toggleModal(customizeModal);
-});
-
-customUpdateBtn.addEventListener("click", (e) => {
-  playSound(e);
-  const currentMode = findCurrentMode();
-  switch (currentMode) {
-    case "work":
-      timerMin.innerText = padWithZeros(customWork.value);
-      break;
-    case "shortBreak":
-      timerMin.innerText = padWithZeros(customShortBreak.value);
-      break;
-    default:
-      timerMin.innerText = padWithZeros(customLongBreak.value);
-  }
-  timerSec.innerText = "00";
-  updateTitle();
-});
-
-//Stats modal
-statsBtn.addEventListener("click", (e) => {
-  playSound(e);
-  stopTimer();
-  toggleStartStop(stopBtn);
-  toggleModal(statsModal);
-});
-
-statsBackBtn.addEventListener("click", (e) => {
-  playSound(e);
-  toggleModal(statsModal);
-});
-
-modalBackground.addEventListener("click", () => {
+modalBackground.addEventListener("click", function () {
   if (customizeModal.classList.contains("active")) {
     toggleModal(customizeModal);
   } else if (statsModal.classList.contains("active")) {
@@ -106,19 +85,6 @@ modalBackground.addEventListener("click", () => {
   }
 });
 
-//More info modal
-helpBtn.addEventListener("click", (e) => {
-  playSound(e);
-  stopTimer();
-  toggleStartStop(stopBtn);
-  toggleModal(helpModal);
-});
-
-helpBackBtn.addEventListener("click", (e) => {
-  playSound(e);
-  toggleModal(helpModal);
-});
-
 window.onbeforeunload = function () {
-  return "Dude, are you sure you want to leave?";
+  return "Are you sure you want to leave?";
 };
